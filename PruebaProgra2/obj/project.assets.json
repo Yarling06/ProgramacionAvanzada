@@ -7763,19 +7763,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\fab22\\.nuget\\packages\\": {}
+    "C:\\Users\\greiv\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fab22\\Downloads\\PruebaProgra2\\PruebaProgra2\\PruebaProgra2\\PruebaProgra2.csproj",
+      "projectUniqueName": "C:\\Users\\greiv\\Source\\Repos\\ProgramacionAvanzada\\PruebaProgra2\\PruebaProgra2.csproj",
       "projectName": "PruebaProgra2",
-      "projectPath": "C:\\Users\\fab22\\Downloads\\PruebaProgra2\\PruebaProgra2\\PruebaProgra2\\PruebaProgra2.csproj",
-      "packagesPath": "C:\\Users\\fab22\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fab22\\Downloads\\PruebaProgra2\\PruebaProgra2\\PruebaProgra2\\obj\\",
+      "projectPath": "C:\\Users\\greiv\\Source\\Repos\\ProgramacionAvanzada\\PruebaProgra2\\PruebaProgra2.csproj",
+      "packagesPath": "C:\\Users\\greiv\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\greiv\\Source\\Repos\\ProgramacionAvanzada\\PruebaProgra2\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\fab22\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\greiv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

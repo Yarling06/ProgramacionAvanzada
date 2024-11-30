@@ -21,7 +21,24 @@ namespace PruebaProgra2.Controllers
         // GET: PrioridadesTarea
         public async Task<IActionResult> Index()
         {
-            return View(await _context.PrioridadesTareas.ToListAsync());
+            // Esto es para recuperar todas las prioridades addemás de tambien traer las tareas asociadas a estas 
+            var prioridadesTarea = await _context.PrioridadesTareas
+                .Include(p => p.Tareas) // Estas son las tareas asociadas
+                .ToListAsync();
+
+            // Esto lo que hace es que recupera las tareas y despues las ordenas según su prioridad ydespues por la fecha de creación  
+            var todasLasTareas = _context.Tareas
+                //Aquí incluimos la prioridad y el estado de la tarea
+                .Include(t => t.Prioridad)
+                .Include(t => t.Estado)
+                // Y aquí ordenamos por prioridad y despues por fecha de creación
+                .OrderBy(t => t.PrioridadId)
+                .ThenBy(t => t.FechaCreacion)
+                .ToList();
+
+            // Y esto es para mandarlo a la vista
+            ViewBag.TodasLasTareas = todasLasTareas;
+            return View(prioridadesTarea);
         }
 
         // GET: PrioridadesTarea/Details/5

@@ -19,17 +19,68 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NivelPrioridad)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PrioridadId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.PrioridadId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PrioridadId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Tareas por Prioridad</h2>
+<table class="table">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NivelPrioridad)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PrioridadId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PrioridadId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PrioridadId">Delete</a>
-            </td>
+            <th>Prioridad</th>
+            <th>Tareas Asociadas</th>
         </tr>
-}
+    </thead>
+    <tbody>
+        @foreach (var prioridad in Model)
+        {
+            <tr>
+                <td>@prioridad.NivelPrioridad</td>
+                <td>
+                    <ul>
+                        @foreach (var tarea in prioridad.Tareas)
+                        {
+                            <li>
+                                @tarea.Nombre - @tarea.Estado.NombreEstado - @tarea.FechaCreacion?.ToString("dd/MM/yyyy")
+                            </li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Todas las Tareas Ordenadas por Prioridad</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre de la Tarea</th>
+            <th>Prioridad</th>
+            <th>Estado</th>
+            <th>Fecha de Creación</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tarea in ViewBag.TodasLasTareas)
+        {
+            <tr>
+                <td>@tarea.Nombre</td>
+                <td>@tarea.Prioridad.NivelPrioridad</td>
+                <td>@tarea.Estado.NombreEstado</td>
+                <td>@tarea.FechaCreacion?.ToString("dd/MM/yyyy")</td>
+            </tr>
+        }
     </tbody>
 </table>
