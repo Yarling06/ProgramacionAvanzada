@@ -1,0 +1,65 @@
+﻿@model IEnumerable<PruebaProgra2.Models.LogsEjecucion>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Mensaje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaLog)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCreacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tarea)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mensaje)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaLog)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCreacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado.EstadoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tarea.TareaId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LogId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.LogId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.LogId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
