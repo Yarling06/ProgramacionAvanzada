@@ -1,14 +1,18 @@
 using Microsoft.EntityFrameworkCore;
 using PruebaProgra2.Models;
+using PruebaProgra2.Workers;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Configurar la base de datos
+builder.Services.AddDbContext<ProyectoPrograDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ProyectoConnection")));
+
+// Registrar el TaskWorkerService como un servicio en segundo plano
+builder.Services.AddSingleton<TaskWorkerService>();
+
+// Agregar los controladores con vistas
 builder.Services.AddControllersWithViews();
-
-builder.Services.AddDbContext<ProyectoPrograDbContext>(options => options.UseSqlServer
-(builder.Configuration.GetConnectionString("ProyectoConnection")));
-
 
 var app = builder.Build();
 

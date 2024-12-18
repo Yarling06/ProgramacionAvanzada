@@ -69,3 +69,14 @@
 }
     </tbody>
 </table>
+
+<!-- Botones para controlar el Worker -->
+<h3>Control del Worker</h3>
+
+<form method="post" action="@Url.Action("StartWorker", "Worker")">
+    <button type="submit" class="btn btn-primary">Iniciar Worker</button>
+</form>
+
+<form method="post" action="@Url.Action("StopWorker", "Worker")">
+    <button type="submit" class="btn btn-danger">Detener Worker</button>
+</form>
