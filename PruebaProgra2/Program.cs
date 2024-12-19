@@ -1,8 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using PruebaProgra2.Models;
+using PruebaProgra2.Services;
 using PruebaProgra2.Workers;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddSingleton<TaskWorkerService>();
+
+builder.Services.AddSingleton<IEmailSender, EmailSender>();
+
 
 // Configurar la base de datos
 builder.Services.AddDbContext<ProyectoPrograDbContext>(options =>
