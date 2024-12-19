@@ -13,13 +13,13 @@ namespace PruebaProgra2.Workers
         private CancellationTokenSource _cancellationTokenSource;
         private Task _executingTask;
 
-        // Esto es para darle un tiempo de vida al Worker, ya que si no el worker trabajaría de Inico a Fin de la aplicación y eso puede causar problemas
+        // Esto es para darle un tiempo de vida al Worker, ya que si no el worker trabajaría de Inicio a Fin de la aplicación y eso puede causar problemas
         public TaskWorkerService(IServiceScopeFactory scopeFactory)
         {
             _scopeFactory = scopeFactory;
         }
 
-        // Esto es lo que usamos para que el Worker Inicié
+        // Esto es lo que usamos para que el Worker Inicie
         public async Task StartWorker()
         {
             // Esto es por si el worker ya está corriendo, es para que no haga nada, eso es lo correcto
@@ -59,12 +59,25 @@ namespace PruebaProgra2.Workers
                             // Simula la ejecución de la tarea
                             await Task.Delay(10000, token);
 
-                            // Cambia el estado de la tarea a "Terminado"
-                            tareaPendiente.EstadoId = 3; // Estado 3 = "Terminado"
-                            tareaPendiente.FechaFinalizacion = DateTime.Now;
-                            _dbContext.SaveChanges();
+                            // Aquí simulamos si la tarea falla o se completa
+                            var random = new Random();
+                            bool falla = random.Next(0, 2) == 0; // 50% de probabilidad de fallar
 
-                            Console.WriteLine($"Tarea '{tareaPendiente.Nombre}' completada");
+                            if (falla)
+                            {
+                                // Cambiamos el estado de la tarea a "Error"
+                                tareaPendiente.EstadoId = 4; // Estado 4 = "Error"
+                                Console.WriteLine($"Tarea '{tareaPendiente.Nombre}' falló");
+                            }
+                            else
+                            {
+                                // Cambiamos el estado de la tarea a "Terminado"
+                                tareaPendiente.EstadoId = 3; // Estado 3 = "Terminado"
+                                tareaPendiente.FechaFinalizacion = DateTime.Now;
+                                Console.WriteLine($"Tarea '{tareaPendiente.Nombre}' completada");
+                            }
+
+                            _dbContext.SaveChanges();
                         }
                         else
                         {

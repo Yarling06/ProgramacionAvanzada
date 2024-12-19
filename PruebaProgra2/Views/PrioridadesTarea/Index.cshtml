@@ -70,17 +70,30 @@
             <th>Prioridad</th>
             <th>Estado</th>
             <th>Fecha de Creación</th>
+            <th>Acción</th> <!--Nueva columna para la acción -->
         </tr>
     </thead>
     <tbody>
         @foreach (var tarea in ViewBag.TodasLasTareas)
         {
-            <tr>
-                <td>@tarea.Nombre</td>
-                <td>@tarea.Prioridad.NivelPrioridad</td>
-                <td>@tarea.Estado.NombreEstado</td>
-                <td>@tarea.FechaCreacion?.ToString("dd/MM/yyyy")</td>
-            </tr>
+                <tr>
+                    <td>@tarea.Nombre</td>
+                    <td>@tarea.Prioridad.NivelPrioridad</td>
+                    <td>@tarea.Estado.NombreEstado</td>
+                    <td>@tarea.FechaCreacion?.ToString("dd/MM/yyyy")</td>
+                    <td>
+                    @if (tarea.EstadoId == 4) // Compara el EstadoId con 4, que es el estado "Fallido"
+                    {
+                                <form method="post" action="@Url.Action("ReintentarTarea", "PrioridadesTarea", new { id = tarea.TareaId })">
+                                    <button type="submit" class="btn btn-primary">Reintentar</button>
+                                </form>
+                    }
+                    else
+                    {
+                                <span>N/A</span> <!-- Si no es "Fallido", mostramos "N/A" -->
+                    }
+                    </td>
+                </tr>
         }
     </tbody>
 </table>
