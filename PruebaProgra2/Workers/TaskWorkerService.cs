@@ -67,14 +67,36 @@ namespace PruebaProgra2.Workers
                             {
                                 // Cambiamos el estado de la tarea a "Error"
                                 tareaPendiente.EstadoId = 4; // Estado 4 = "Error"
-                                Console.WriteLine($"Tarea '{tareaPendiente.Nombre}' falló");
+
+                                // Registrar en LogsEjecucion
+                                var log = new LogsEjecucion
+                                {
+                                    TareaId = tareaPendiente.TareaId,
+                                    EstadoId = 4, // Fallida
+                                    Mensaje = $"La tarea '{tareaPendiente.Nombre}' falló.",
+                                    FechaLog = DateTime.Now
+                                };
+                                _dbContext.LogsEjecucions.Add(log);
+
+                                Console.WriteLine($"Tarea '{tareaPendiente.Nombre}' falló.");
                             }
                             else
                             {
                                 // Cambiamos el estado de la tarea a "Terminado"
                                 tareaPendiente.EstadoId = 3; // Estado 3 = "Terminado"
                                 tareaPendiente.FechaFinalizacion = DateTime.Now;
-                                Console.WriteLine($"Tarea '{tareaPendiente.Nombre}' completada");
+
+                                // Registrar en LogsEjecucion
+                                var log = new LogsEjecucion
+                                {
+                                    TareaId = tareaPendiente.TareaId,
+                                    EstadoId = 3, // Finalizada
+                                    Mensaje = $"La tarea '{tareaPendiente.Nombre}' se completó exitosamente.",
+                                    FechaLog = DateTime.Now
+                                };
+                                _dbContext.LogsEjecucions.Add(log);
+
+                                Console.WriteLine($"Tarea '{tareaPendiente.Nombre}' completada.");
                             }
 
                             _dbContext.SaveChanges();
