@@ -3,6 +3,74 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Bienvenido User!</h1>
+    <h3>
+        Analísis actuales
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
+        </svg>
+    </h3>
 </div>
+
+<div class="container mt-4">
+    <h1 class="dashboard-title mb-4">Dashboard de Queue</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="chartEstados"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="chartPrioridades"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+        $(document).ready(function () {
+        $.getJSON('/Home/GetDashboardData', function (data) {
+            console.log(data);
+            var estados = data.estados;
+            var prioridades = data.prioridades;
+
+            // Gráfico de Estados
+            var ctxEstados = document.getElementById('chartEstados').getContext('2d');
+            var chartEstados = new Chart(ctxEstados, {
+                type: 'pie',
+                data: {
+                    labels: estados.map(e => e.estado), // Nombre del estado
+                    datasets: [{
+                        data: estados.map(e => e.total), // Total por estado
+                        backgroundColor: ['#3498db', '#e74c3c', '#f1c40f', '#2ecc71']
+                    }]
+                }
+            });
+
+            // Gráfico de Prioridades
+            var ctxPrioridades = document.getElementById('chartPrioridades').getContext('2d');
+            var chartPrioridades = new Chart(ctxPrioridades, {
+                type: 'bar',
+                data: {
+                    labels: prioridades.map(p => p.prioridad), // Nivel de prioridad
+                    datasets: [{
+                        data: prioridades.map(p => p.total), // Total por prioridad
+                        backgroundColor: ['#e74c3c', '#f1c40f', '#2ecc71']
+                    }]
+                }
+            });
+        });
+    });
+
+
+</script>
