@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<PruebaProgra2.Models.Tarea>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Queue de Tareas";
 }
 
-<h1>Index</h1>
+<h1>Tabla de Tareas</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Crear nueva tarea</a>
 </p>
 <table class="table">
     <thead>
@@ -28,47 +28,49 @@
                 @Html.DisplayNameFor(model => model.FechaFinalizacion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Estado)
+                Estado
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Prioridad)
+                Prioridad
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaCreacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaEjecucion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaFinalizacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado.EstadoId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Prioridad.PrioridadId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TareaId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TareaId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TareaId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaCreacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaEjecucion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaFinalizacion)
+                </td>
+                <td>
+                    @item.Estado.NombreEstado
+                </td>
+                <td>
+                    @item.Prioridad.NivelPrioridad
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TareaId">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.TareaId">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.TareaId">Eliminar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
 
 <!-- Botones para controlar el Worker -->
 <h3>Control del Worker</h3>

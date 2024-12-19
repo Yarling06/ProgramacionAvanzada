@@ -17,15 +17,26 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = PruebaProgra2
 build_property.RootNamespace = PruebaProgra2
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\fab22\Downloads\PruebaProgra2\PruebaProgra2\PruebaProgra2\
+=======
+build_property.ProjectDir = C:\Users\yeray\Source\Repos\ProgramacionAvanzada\PruebaProgra2\
+>>>>>>> 5d4686739fe4947d0d88bac37b7afb130e459583
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+<<<<<<< HEAD
 build_property.MSBuildProjectDirectory = C:\Users\fab22\Downloads\PruebaProgra2\PruebaProgra2\PruebaProgra2
+=======
+build_property.MSBuildProjectDirectory = C:\Users\yeray\Source\Repos\ProgramacionAvanzada\PruebaProgra2
+>>>>>>> 5d4686739fe4947d0d88bac37b7afb130e459583
 build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
 
+<<<<<<< HEAD
 [C:/Users/fab22/Downloads/PruebaProgra2/PruebaProgra2/PruebaProgra2/Views/EstadosTarea/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0YWRvc1RhcmVhXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -131,5 +142,112 @@ build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/fab22/Downloads/PruebaProgra2/PruebaProgra2/PruebaProgra2/Views/Shared/_Layout.cshtml]
+=======
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/EstadosTarea/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0YWRvc1RhcmVhXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/EstadosTarea/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0YWRvc1RhcmVhXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/EstadosTarea/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0YWRvc1RhcmVhXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/EstadosTarea/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0YWRvc1RhcmVhXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/EstadosTarea/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0YWRvc1RhcmVhXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/LogsEjecucion/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nc0VqZWN1Y2lvblxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/LogsEjecucion/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nc0VqZWN1Y2lvblxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/LogsEjecucion/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nc0VqZWN1Y2lvblxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/LogsEjecucion/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nc0VqZWN1Y2lvblxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/LogsEjecucion/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nc0VqZWN1Y2lvblxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/PrioridadesTarea/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpb3JpZGFkZXNUYXJlYVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/PrioridadesTarea/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpb3JpZGFkZXNUYXJlYVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/PrioridadesTarea/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpb3JpZGFkZXNUYXJlYVxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/PrioridadesTarea/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpb3JpZGFkZXNUYXJlYVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/PrioridadesTarea/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpb3JpZGFkZXNUYXJlYVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/Tarea/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWFcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/Tarea/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWFcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/Tarea/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWFcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/Tarea/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWFcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/Tarea/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWFcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/yeray/Source/Repos/ProgramacionAvanzada/PruebaProgra2/Views/Shared/_Layout.cshtml]
+>>>>>>> 5d4686739fe4947d0d88bac37b7afb130e459583
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-3a9htk9d6d

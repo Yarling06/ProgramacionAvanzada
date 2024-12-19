@@ -7763,19 +7763,37 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\fab22\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\yeray\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+>>>>>>> 5d4686739fe4947d0d88bac37b7afb130e459583
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\fab22\\Downloads\\PruebaProgra2\\PruebaProgra2\\PruebaProgra2\\PruebaProgra2.csproj",
       "projectName": "PruebaProgra2",
       "projectPath": "C:\\Users\\fab22\\Downloads\\PruebaProgra2\\PruebaProgra2\\PruebaProgra2\\PruebaProgra2.csproj",
       "packagesPath": "C:\\Users\\fab22\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\fab22\\Downloads\\PruebaProgra2\\PruebaProgra2\\PruebaProgra2\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\yeray\\Source\\Repos\\ProgramacionAvanzada\\PruebaProgra2\\PruebaProgra2.csproj",
+      "projectName": "PruebaProgra2",
+      "projectPath": "C:\\Users\\yeray\\Source\\Repos\\ProgramacionAvanzada\\PruebaProgra2\\PruebaProgra2.csproj",
+      "packagesPath": "C:\\Users\\yeray\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yeray\\Source\\Repos\\ProgramacionAvanzada\\PruebaProgra2\\obj\\",
+>>>>>>> 5d4686739fe4947d0d88bac37b7afb130e459583
       "projectStyle": "PackageReference",
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\fab22\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\yeray\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+>>>>>>> 5d4686739fe4947d0d88bac37b7afb130e459583
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7783,7 +7801,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -7800,8 +7817,9 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "direct"
-      }
+        "auditMode": "all"
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0": {
@@ -7845,7 +7863,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

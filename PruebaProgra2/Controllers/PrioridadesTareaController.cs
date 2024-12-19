@@ -41,6 +41,28 @@ namespace PruebaProgra2.Controllers
             return View(prioridadesTarea);
         }
 
+        // Método para reintentar una tarea fallida
+        [HttpPost]
+        public IActionResult ReintentarTarea(int id)
+        {
+            // Buscamos la tarea por ID
+            var tarea = _context.Tareas.FirstOrDefault(t => t.TareaId == id);
+
+            if (tarea == null || tarea.EstadoId != 4) // 4 es "Error"
+            {
+                // Devuelve error si no existe la tarea o no está en estado "Error"
+                return NotFound();
+            }
+
+            // Cambiamos el estado de la tarea a "Pendiente"
+            tarea.EstadoId = 1; // 1 es "Pendiente"
+            tarea.FechaEjecucion = DateTime.Now; // Actualizamos la fecha de ejecución
+            _context.SaveChanges();
+
+            // Esto es para redirigir al Index de PrioridadesTarea
+            return RedirectToAction("Index");
+        }
+
         // GET: PrioridadesTarea/Details/5
         public async Task<IActionResult> Details(int? id)
         {

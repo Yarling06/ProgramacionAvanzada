@@ -16,14 +16,23 @@ namespace PruebaProgra2.Workers
         private CancellationTokenSource _cancellationTokenSource;
         private Task _executingTask;
 
+<<<<<<< HEAD
         // Constructor para inicializar el servicio con un Factory de scope
         public TaskWorkerService(IServiceScopeFactory scopeFactory, IEmailSender emailSender)
+=======
+        // Esto es para darle un tiempo de vida al Worker, ya que si no el worker trabajaría de Inicio a Fin de la aplicación y eso puede causar problemas
+        public TaskWorkerService(IServiceScopeFactory scopeFactory)
+>>>>>>> 5d4686739fe4947d0d88bac37b7afb130e459583
         {
             _scopeFactory = scopeFactory;
             _emailSender = emailSender; // Asignar el servicio IEmailSender
         }
 
+<<<<<<< HEAD
         // Inicia el Worker en segundo plano
+=======
+        // Esto es lo que usamos para que el Worker Inicie
+>>>>>>> 5d4686739fe4947d0d88bac37b7afb130e459583
         public async Task StartWorker()
         {
             // Si ya hay una tarea ejecutándose, no hacemos nada
@@ -49,6 +58,7 @@ namespace PruebaProgra2.Workers
 
                             Console.WriteLine("Worker ejecutándose...");
 
+<<<<<<< HEAD
                             // Buscamos las tareas que están pendientes y cuya fecha de ejecución ha llegado
                             var tareaPendiente = _dbContext.Tareas
                                 .Where(t => t.EstadoId == 1) // Estado "Pendiente"
@@ -121,6 +131,49 @@ namespace PruebaProgra2.Workers
                                     $"La tarea '{tarea.Nombre}' ha finalizado correctamente."
                                 );
                             }
+=======
+                            // Aquí simulamos si la tarea falla o se completa
+                            var random = new Random();
+                            bool falla = random.Next(0, 2) == 0; // 50% de probabilidad de fallar
+
+                            if (falla)
+                            {
+                                // Cambiamos el estado de la tarea a "Error"
+                                tareaPendiente.EstadoId = 4; // Estado 4 = "Error"
+
+                                // Registrar en LogsEjecucion
+                                var log = new LogsEjecucion
+                                {
+                                    TareaId = tareaPendiente.TareaId,
+                                    EstadoId = 4, // Fallida
+                                    Mensaje = $"La tarea '{tareaPendiente.Nombre}' falló.",
+                                    FechaLog = DateTime.Now
+                                };
+                                _dbContext.LogsEjecucions.Add(log);
+
+                                Console.WriteLine($"Tarea '{tareaPendiente.Nombre}' falló.");
+                            }
+                            else
+                            {
+                                // Cambiamos el estado de la tarea a "Terminado"
+                                tareaPendiente.EstadoId = 3; // Estado 3 = "Terminado"
+                                tareaPendiente.FechaFinalizacion = DateTime.Now;
+
+                                // Registrar en LogsEjecucion
+                                var log = new LogsEjecucion
+                                {
+                                    TareaId = tareaPendiente.TareaId,
+                                    EstadoId = 3, // Finalizada
+                                    Mensaje = $"La tarea '{tareaPendiente.Nombre}' se completó exitosamente.",
+                                    FechaLog = DateTime.Now
+                                };
+                                _dbContext.LogsEjecucions.Add(log);
+
+                                Console.WriteLine($"Tarea '{tareaPendiente.Nombre}' completada.");
+                            }
+
+                            _dbContext.SaveChanges();
+>>>>>>> 5d4686739fe4947d0d88bac37b7afb130e459583
                         }
                         catch (Exception ex)
                         {
