@@ -12,6 +12,8 @@ namespace PruebaProgra2.Workers
         private readonly IServiceScopeFactory _scopeFactory;
         private CancellationTokenSource _cancellationTokenSource;
         private Task _executingTask;
+        public static List<string> WorkerErrors { get; private set; } = new List<string>();
+
 
         // Esto es para darle un tiempo de vida al Worker, ya que si no el worker trabajaría de Inicio a Fin de la aplicación y eso puede causar problemas
         public TaskWorkerService(IServiceScopeFactory scopeFactory)
@@ -22,75 +24,67 @@ namespace PruebaProgra2.Workers
         // Esto es lo que usamos para que el Worker Inicie
         public async Task StartWorker()
         {
-            // Esto es por si el worker ya está corriendo, es para que no haga nada, eso es lo correcto
             if (_executingTask != null && !_executingTask.IsCompleted)
             {
+                Console.WriteLine("El worker ya está en ejecución.");
                 return;
             }
 
+            Console.WriteLine("Iniciando el worker...");
             _cancellationTokenSource = new CancellationTokenSource();
             var token = _cancellationTokenSource.Token;
 
-            // Aquí iniciamos el procesamiento en segundo plano
             _executingTask = Task.Run(async () =>
             {
                 while (!token.IsCancellationRequested)
                 {
                     using (var scope = _scopeFactory.CreateScope())
                     {
-                        // Accedemos al DbContext
                         var _dbContext = scope.ServiceProvider.GetRequiredService<ProyectoPrograDbContext>();
 
                         Console.WriteLine("Worker ejecutándose...");
 
-                        // Aquí es donde buscamos las tareas pendientes
                         var tareaPendiente = _dbContext.Tareas
-                            .Where(t => t.EstadoId == 1) // 1 es "Pendiente"
-                            .OrderBy(t => t.PrioridadId) // Ordena por prioridad
-                            .ThenBy(t => t.FechaEjecucion) // Luego por fecha de ejecución
+                            .Where(t => t.EstadoId == 1)
+                            .OrderBy(t => t.PrioridadId)
+                            .ThenBy(t => t.FechaEjecucion)
                             .FirstOrDefault();
 
                         if (tareaPendiente != null)
                         {
-                            // Cambiamos el estado de la tarea a "En Proceso"
-                            tareaPendiente.EstadoId = 2; // Estado 2 = "En Proceso"
+                            tareaPendiente.EstadoId = 2;
                             _dbContext.SaveChanges();
 
-                            // Simula la ejecución de la tarea
                             await Task.Delay(10000, token);
 
-                            // Aquí simulamos si la tarea falla o se completa
                             var random = new Random();
-                            bool falla = random.Next(0, 2) == 0; // 50% de probabilidad de fallar
+                            bool falla = random.Next(0, 2) == 0;
 
                             if (falla)
                             {
-                                // Cambiamos el estado de la tarea a "Error"
-                                tareaPendiente.EstadoId = 4; // Estado 4 = "Error"
+                                tareaPendiente.EstadoId = 4;
 
-                                // Registrar en LogsEjecucion
                                 var log = new LogsEjecucion
                                 {
                                     TareaId = tareaPendiente.TareaId,
-                                    EstadoId = 4, // Fallida
+                                    EstadoId = 4,
                                     Mensaje = $"La tarea '{tareaPendiente.Nombre}' falló.",
                                     FechaLog = DateTime.Now
                                 };
                                 _dbContext.LogsEjecucions.Add(log);
 
-                                Console.WriteLine($"Tarea '{tareaPendiente.Nombre}' falló.");
+                                WorkerErrors.Add($"La tarea '{tareaPendiente.Nombre}' falló a las {DateTime.Now:HH:mm:ss}.");
+                                Console.WriteLine($"Error: La tarea '{tareaPendiente.Nombre}' falló.");
                             }
                             else
                             {
-                                // Cambiamos el estado de la tarea a "Terminado"
-                                tareaPendiente.EstadoId = 3; // Estado 3 = "Terminado"
+                                tareaPendiente.EstadoId = 3;
                                 tareaPendiente.FechaFinalizacion = DateTime.Now;
 
-                                // Registrar en LogsEjecucion
                                 var log = new LogsEjecucion
                                 {
                                     TareaId = tareaPendiente.TareaId,
-                                    EstadoId = 3, // Finalizada
+                                    EstadoId = 3,
                                     Mensaje = $"La tarea '{tareaPendiente.Nombre}' se completó exitosamente.",
                                     FechaLog = DateTime.Now
                                 };
@@ -103,29 +97,32 @@ namespace PruebaProgra2.Workers
                         }
                         else
                         {
-                            // Si no hay tareas pendientes, espera un tiempo más largo antes de buscar de nuevo
                             Console.WriteLine("No hay tareas pendientes, esperando...");
                             await Task.Delay(10000, token);
                         }
                     }
                 }
             }, token);
+
+            Console.WriteLine("Worker iniciado correctamente.");
         }
 
-        // Esto es para detener el worker
         public async Task StopWorker()
         {
-            // Si el worker no está ejecutándose, no hace nada
             if (_executingTask == null || _executingTask.IsCompleted)
             {
+                Console.WriteLine("El worker ya está detenido.");
                 return;
             }
 
-            // Cancela el token de ejecución
+            Console.WriteLine("Deteniendo el worker...");
             _cancellationTokenSource?.Cancel();
 
-            // Espera a que el worker finalice de forma ordenada
             await Task.WhenAny(_executingTask, Task.Delay(Timeout.Infinite, _cancellationTokenSource.Token));
+            Console.WriteLine("Worker detenido correctamente.");
         }
+
+
+        // Esto es para detener el worker
     }
 }

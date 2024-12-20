@@ -17,7 +17,8 @@ namespace PruebaProgra2.Controllers
         public async Task<IActionResult> StartWorker()
         {
             await _taskWorkerService.StartWorker();
-            return RedirectToAction("Index", "Tarea"); // Redirige a la vista "Index" de Tarea
+            TempData["WorkerMessage"] = "Worker iniciado correctamente.";
+            return RedirectToAction("Index", "Tarea");
         }
 
         // Esto es para detener el worker
@@ -25,7 +26,25 @@ namespace PruebaProgra2.Controllers
         public async Task<IActionResult> StopWorker()
         {
             await _taskWorkerService.StopWorker();
-            return RedirectToAction("Index", "Tarea"); // Redirige a la vista "Index" de Tarea
+            TempData["WorkerMessage"] = "Worker detenido correctamente.";
+            return RedirectToAction("Index", "Tarea");
         }
+
+        
+        public IActionResult ShowWorkerErrors()
+        {
+            if (TaskWorkerService.WorkerErrors.Any())
+            {
+                TempData["WorkerErrors"] = string.Join("<br>", TaskWorkerService.WorkerErrors);
+                TaskWorkerService.WorkerErrors.Clear(); // Limpia los errores después de mostrarlos
+            }
+            else
+            {
+                TempData["WorkerErrors"] = null; // Limpia TempData si no hay errores
+            }
+            return RedirectToAction("Index", "Tarea");
+        }
+
+
     }
 }

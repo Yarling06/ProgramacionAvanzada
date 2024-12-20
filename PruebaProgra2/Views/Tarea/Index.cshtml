@@ -4,6 +4,22 @@
     ViewData["Title"] = "Queue de Tareas";
 }
 
+@if (TempData["WorkerMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["WorkerMessage"]
+    </div>
+}
+
+@if (TempData["WorkerErrors"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Errores del Worker:</strong>
+        <p>@Html.Raw(TempData["WorkerErrors"])</p>
+    </div>
+}
+
+
 <h1>Tabla de Tareas</h1>
 
 <p>
